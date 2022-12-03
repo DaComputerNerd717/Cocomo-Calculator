@@ -1,0 +1,73 @@
+/*Table cells with visible borders*/
+.bordered{ 
+    border: 1px solid black;
+    text-align:center;
+    border-collapse:collapse;
+    visibility:visible;
+}
+/*Table cells with visible borders and a double border on the bottom*/
+.borderedb{ 
+    border-collapse:collapse;
+    border: 1px solid black;
+    text-align:center;
+    border-top-style:solid;
+    border-right-style:solid;
+    border-left-style:solid;
+    border-bottom-style: double;
+    border-bottom-width:3px;
+    visibility:visible;
+}        
+/*Table cells with visible borders and a double border on the right*/
+.borderedr{ 
+    border-collapse:collapse;
+    border: 1px solid black;
+    text-align:center;
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-right-width:3px;
+    border-left-style:solid;
+    border-right-style: double;
+    visibility:visible;
+}
+a{
+    margin-left:5vw;
+    margin-right:5vw;
+    font-size:18px;
+}
+/*Styles the radio buttons inside the table*/
+td input{
+    margin:auto
+}
+/*Avoid changing the below options; these are for controlling visibility.
+Only change them if something remains visible when it shouldn't be.*/
+.fpOnly{
+    visibility:visible;
+    display:block;
+}
+.borderedH{
+    visibility:hidden;
+    content-visibility:inherit;
+    border:white,0px;
+}
+.borderedbH{
+    visibility:hidden;
+    content-visibility:inherit;
+    border:white,0px;
+}
+.borderedrH{
+    visibility:hidden;
+    content-visibility:inherit;
+    border:white,0px;
+}
+.intermediateOnlyH{
+    visibility:hidden;
+    display:none;
+}
+.intermediateOnly{
+    visibility:visible;
+    display:block;
+}
+.fpOnlyH{
+    visibility:hidden;
+    display:none;
+}
