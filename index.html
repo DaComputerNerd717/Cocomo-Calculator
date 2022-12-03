@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="mainpage_style.css"></link>
+    <script type="text/javascript" src="mainpage.js"></script>
+</head>
+<body>
+    <nav style="text-align: left">
+        <a>Home</a>
+        <a>About</a>
+        <a>Help</a>
+        <!--TODO add links-->
+    </nav>
+    <hr>
+    <h1>COCOMO calculator</h1> 
+    <h2>Software Sizing</h2>
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="html">FP</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="inputType" checked="checked" id="fpSelect" value="FP" onclick="showFP()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="html">KLOC</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="inputType" id="klocSelect" value="KLOC" onclick="hideFP()">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <input type="text" id="workInput" class="clearOnReload" style="margin-left: 0.7em">
+            </td>
+        </tr>
+    </table>
+    
+    <label for="lang" class="fpOnly">Programming Language: </label>
+    <select name="lang" id="langSelect" class="fpOnly">
+        <option value="53.0">Java</option>
+        <option value="50.0">C++</option>
+        <option value="47.0">JavaScript</option>
+        <!--TODO add more languages-->
+    </select>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <td>
+                <h2>COCOMO type:</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="html">Basic COCOMO</label>
+            </td>
+            <td>
+                <input type="radio" name="cocomoType" id="basicSelect" value="basic" onclick="hideIntermediate()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="html">Intermediate COCOMO</label>
+            </td>
+            <td>
+                <input type="radio" name="cocomoType" id="intermediateSelect" checked="checked" value="intermediate" onclick="showIntermediate()">
+            </td>
+        </tr>
+    </table>
+    <br>
+    <label for="sizingType">Sizing type:</label>
+    <select name="sizingType" id="sizingType">
+        <option value="organic">Organic</option>
+        <option value="semi-detached">Semi-detached</option>
+        <option value="embedded">Embedded</option>
+    </select>
+    <h2 class="intermediateOnly">Cost Drivers:</h2>
+    <table class="bordered" id="driverTable">
+        <tr class="bordered">
+            <td class="borderedr">
+                <b class = "intermediateOnly">Product Attributes</b>
+            </td>
+            <th class="borderedb">
+                <b class = "intermediateOnly">Very low</b>
+            </th>
+            <th class="borderedb">
+                <b class = "intermediateOnly">Low</b>
+            </th>
+            <th class="borderedb">
+                <b class = "intermediateOnly">Average</b>
+            </th>
+            <th class="borderedb">
+                <b class = "intermediateOnly">High</b>
+            </th>
+            <th class="borderedb"><b class = "intermediateOnly">Very high</b></th>
+            <th class="borderedb"><b class = "intermediateOnly">Extremely high</b></th>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Reliability</div></td>
+            <td class="bordered">
+                <input class = "intermediateOnly" type="radio" name="rely">
+            </td>
+            <td class="bordered">
+                <input class = "intermediateOnly" type="radio" name="rely">
+            </td>
+            <td class="bordered">
+                <input class = "intermediateOnly" type="radio" checked="checked" name="rely">
+            </td>
+            <td class="bordered">
+                <input class = "intermediateOnly" type="radio" name="rely">
+            </td>
+            <td class="bordered">
+                <input class = "intermediateOnly" type="radio" name="rely">
+            </td>
+            <td class="bordered"></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Database Size</div></td>
+            <td class="bordered"></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="dbSize">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="dbSize">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="dbSize">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="dbSize">
+            </td>
+            <td class="bordered"></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Complexity</div></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="compl">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="compl">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="compl">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="compl">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="compl">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="compl">
+            </td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><b class = "intermediateOnly">Computer Attributes</b></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Performance</div></td>
+            <td class="bordered"></td>
+            <td class="bordered"></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="perf">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="perf">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="perf">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="perf">
+            </td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Memory</div></td>
+            <td class="bordered"></td>
+            <td class="bordered"></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="mem">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="mem">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="mem">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="mem">
+            </td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">VM complexity</div></td>
+            <td class="bordered"></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="vm">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="vm">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="vm">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="vm">
+            </td>
+            <td class="bordered"></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Turnabout time</div></td>
+            <td class="bordered"></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="turnabout">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="turnabout">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="turnabout">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="turnabout">
+            </td>
+            <td class="bordered"></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><b class = "intermediateOnly">Personnel Attributes</b></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Analyst Capability</div></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="analyst">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="analyst">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="analyst">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="analyst">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="analyst">
+            </td>
+            <td class="bordered"></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Applications Experience</div></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="appExp">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="appExp">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="appExp">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="appExp">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="appExp">
+            </td>
+            <td class="bordered"></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Programmer Capability</div></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="pCap">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="pCap">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="pCap">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="pCap">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="pCap">
+            </td>
+            <td class="bordered"></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">VM experience</div></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="vmExp">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="vmExp">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="vmExp">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="vmExp">
+            </td>
+            <td class="bordered"></td>
+            <td class="bordered"></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Language experience</div></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="plExp">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="plExp">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="plExp">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="plExp">
+            </td>
+            <td class="bordered"></td>
+            <td class="bordered"></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><b class = "intermediateOnly">Project Attributes</b></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">SE method application</div></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="SEma">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="SEma">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="SEma">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="SEma">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="SEma">
+            </td>
+            <td class="bordered"></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Use of software tools</div></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="tools">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="tools">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="tools">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="tools">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="tools">
+            </td>
+            <td class="bordered"></td>
+        </tr>
+        <tr class="bordered">
+            <td class="borderedr"><div class = "intermediateOnly">Required schedule</div></td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="sched">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="sched">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" checked="checked" name="sched">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="sched">
+            </td>
+            <td class="bordered">
+                <input type="radio" class = "intermediateOnly" name="sched">
+            </td>
+            <td class="bordered"></td>
+        </tr>
+    </table>
+    <br>
+    <button onclick="onCalculateClick()">
+        <h3 x>Calculate</h3>
+    </button>
+    <h2>Results:</h2>
+    <table>
+        <tr>
+            <td>
+                <label for="html">Total Effort (person-months): </label>
+            </td>
+            <td>
+                <input readonly id="effortBox" class="clearOnReload" name="effort">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="html">Development Time (months): </label>
+            </td>
+            <td>
+                <input readonly id="timeBox" class="clearOnReload" name="time">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="devs">Staffing Required (people): </label>
+            </td>
+            <td>
+                <input readonly id="devsBox" class="clearOnReload" name="devs">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="cost">Estimated cost (dollars): </label>
+            </td>
+            <td>
+                <input readonly id="costBox" class="clearOnReload" name="cost">
+            </td>
+        </tr>
+    </table>
+</body>
