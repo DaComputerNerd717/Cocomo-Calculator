@@ -254,14 +254,12 @@ function onCalculateClick(){
     var kloc = calculateKLOC();
     var eaf = 1;
     var result;
-    console.log(constants);
-    console.log(kloc);
+
     if(intermediate){
         buildSelectedList();
         for(let i = 0; i < selectedDrivers.length; i++){
             eaf *= costdrivers[i][selectedDrivers[i]];
         }
-        console.log(eaf);
         result = calculateIntermediate(constants, kloc, eaf);
     }else{
         result = calculateBasic(constants, kloc);
