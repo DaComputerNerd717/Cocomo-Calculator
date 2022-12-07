@@ -2,6 +2,7 @@
 <head>
     <link rel="stylesheet" href="mainpage_style.css"></link>
     <script type="text/javascript" src="mainpage.js"></script>
+    <title>COCOMO Calculator</title>
 </head>
 <body>
     <nav style="text-align: left">
@@ -72,13 +73,16 @@
             </td>
         </tr>
     </table>
-    <br>
     <label for="sizingType">Sizing type:</label>
     <select name="sizingType" id="sizingType">
         <option value="organic">Organic</option>
         <option value="semi-detached">Semi-detached</option>
         <option value="embedded">Embedded</option>
     </select>
+    <br><br>
+    <label for="avgWage" value="74229.00">Average developer wage: </label>
+    <input id="wageBox" class="clearOnReload" name="avgWage">
+    <br>
     <h2 class="intermediateOnly">Cost Drivers:</h2>
     <table class="bordered" id="driverTable">
         <tr class="bordered">

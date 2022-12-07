@@ -1,5 +1,3 @@
-const salary = 74229;
-
 var intermediate = true;
 
 //reset everything on reload
@@ -39,6 +37,7 @@ window.onload = function(){
     for (const e of document.getElementsByClassName("clearOnReload")) {
         e.value = "";
     }
+    document.getElementById("wageBox").value = "74229.00"; //TODO verify average dev wage
 }
 
 function hideIntermediate(){
@@ -225,6 +224,7 @@ function getConstants(){
 }
 
 function calculateIntermediate(constants, kloc, eaf){
+    var salary = parseFloat(document.getElementById("wageBox").value);    
     var effort = constants[0] * (kloc ** constants[1]) * eaf;
     var devTime = constants[2] * (effort ** constants[3]);
     var devs = effort / devTime;
@@ -233,6 +233,7 @@ function calculateIntermediate(constants, kloc, eaf){
 }
 
 function calculateBasic(constants, kloc){
+    var salary = parseFloat(document.getElementById("wageBox").value);
     var effort = constants[0] * (kloc ** constants[1]);
     var devTime = constants[2] * (effort ** constants[3]);
     var devs = effort / devTime;
@@ -250,6 +251,8 @@ function onCalculateClick(){
         }
         return false;
     }
+    if(!(document.getElementById("wageBox").value.match(/^\d+(?:\.\d{1,2})?$/)))
+        alert("You must enter a valid amount of money for the wage. Only numbers with at most 2 decimal digits are accepted");
     var constants = getConstants();
     var kloc = calculateKLOC();
     var eaf = 1;
