@@ -213,9 +213,9 @@ function getConstants(){
         row = 2;
     }
     if(document.getElementById("basicSelect").checked){
-        constants[0] = consts[row][0]; 
+        constants[0] = consts[row][1]; 
     }else{
-        constants[0] = consts[row][1];
+        constants[0] = consts[row][0];
     }
     constants[1] = consts[row][2];
     constants[2] = consts[row][3];
