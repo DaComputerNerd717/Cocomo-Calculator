@@ -13,7 +13,7 @@ body {
   .about-section {
     padding: 10px;
     text-align: center;
-    background-color: #7bc6d3;
+    background-color: #000708;
     color: white;
   }
 
@@ -22,7 +22,7 @@ body {
   }
   
   .topnav {
-    background-color: #7bc6d3;
+    background-color: #000000;
     overflow: hidden;
   }
   
@@ -44,7 +44,7 @@ body {
   
   /* Add a color to the active/current link */
   .topnav a.active {
-    background-color: #04AA6D;
+    background-color: #020202;
     color: white;
   }
 
